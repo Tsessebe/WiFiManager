@@ -1477,6 +1477,8 @@ String WiFiManager::getHTTPHead(String title)
     page += FPSTR(HTTP_HEAD_END);
   }
 
+  page += _customTopBodyElement;
+
   return page;
 }
 
@@ -2880,14 +2882,8 @@ boolean WiFiManager::captivePortal()
   }
   bool doredirect = serverLoc != server->hostHeader(); // redirect if hostheader not server ip, prevent redirect loops
 
-  //Only redirect the portal detection requests. Avoids overload.
-  doredirect = doredirect 
-                && (server->hostHeader().indexOf("connect")>=0
-                    || server->hostHeader().indexOf("msft")>=0
-                    || server->hostHeader().indexOf("apple")>=0
-                    || server->uri().startsWith("/gen")
-                    || server->uri().indexOf("hostpot")>=0
-                );
+  // Only redirect the portal detection requests. Avoids overload.
+  doredirect = doredirect && (server->hostHeader().indexOf("connect") >= 0 || server->hostHeader().indexOf("msft") >= 0 || server->hostHeader().indexOf("apple") >= 0 || server->uri().startsWith("/gen") || server->uri().indexOf("hostpot") >= 0);
 
   if (doredirect)
   {
@@ -3392,6 +3388,17 @@ void WiFiManager::setConfigPortalTimeoutCallback(std::function<void()> func)
 void WiFiManager::setCustomHeadElement(const char *html)
 {
   _customHeadElement = html;
+}
+
+/**
+ * set custom top body html
+ * custom element will be added to shortly after body tag opened, eg. to show a logo etc.
+ * @access public
+ * @param char element
+ */
+void WiFiManager::setCustomTopBodyElement(const char *html)
+{
+  _customTopBodyElement = html;
 }
 
 /**

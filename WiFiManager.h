@@ -373,6 +373,9 @@ public:
     // add custom html at inside <head> for all pages
     void setCustomHeadElement(const char *html);
 
+    //add custom html at start of <body> for all pages
+    void setCustomTopBodyElement(const char* html);
+
     // if this is set, customise style
     void setCustomMenuHTML(const char *html);
 
@@ -597,10 +600,11 @@ protected:
     boolean _disableConfigPortal = true;     // FOR autoconnect - stop config portal if cp wifi save
     String _hostname = "";                   // hostname for esp8266 for dhcp, and or MDNS
 
-    const char *_customHeadElement = ""; // store custom head element html from user isnide <head>
-    const char *_customMenuHTML = "";    // store custom head element html from user inside <>
-    String _bodyClass = "";              // class to add to body
-    String _title = FPSTR(S_brand);      // app title -  default WiFiManager
+    const char *_customHeadElement = "";    // store custom head element html from user isnide <head>
+    const char* _customTopBodyElement = ""; // store custom top body element html from user inside <body>
+    const char *_customMenuHTML = "";       // store custom head element html from user inside <>
+    String _bodyClass = "";                 // class to add to body
+    String _title = FPSTR(S_brand);         // app title -  default WiFiManager
 
     // internal options
 
@@ -793,7 +797,7 @@ protected:
 
 // Set default debug level
 #ifndef WM_DEBUG_LEVEL
-#define WM_DEBUG_LEVEL WM_DEBUG_NOTIFY
+#define WM_DEBUG_LEVEL WM_DEBUG_DEV
 #endif
 
 // override debug level OFF
