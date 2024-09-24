@@ -79,6 +79,7 @@ const char HTTP_END[]              PROGMEM = "</div></body></html>";
 const char HTTP_ERASEBTN[]         PROGMEM = "<br/><form action='/erase' method='get'><button class='D'>Effacer la configuration WiFi</button></form>";
 const char HTTP_UPDATEBTN[]        PROGMEM = "<br/><form action='/update' method='get'><button>Mettre à jour</button></form>";
 const char HTTP_BACKBTN[]          PROGMEM = "<hr><br/><form action='/' method='get'><button>Retour</button></form>";
+const char HTTP_HOMEBTN[]          PROGMEM = "<hr><br/><form action='/' method='get'><button>Home</button></form>";
 
 const char HTTP_STATUS_ON[]        PROGMEM = "<div class='msg S'><strong>Connecté</strong> to {v}<br/><em><small>with IP {i}</small></em></div>";
 const char HTTP_STATUS_OFF[]       PROGMEM = "<div class='msg {c}'><strong>Non connecté</strong> à {v}{r}</div>"; // {c=class} {v=ssid} {r=status_off}
